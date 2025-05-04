@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>taca.io</title>
+
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" as="style">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      padding: 0;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      background-color: #000;
+      color: #fff;
+      padding: 15px 40px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      z-index: 100;
+    }
+
+    .navbar a {
+      color: #00aaff;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-right: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #fff;
+    }
+
+    /* Menu button and popup */
+    .menu-bar {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      z-index: 102;
+    }
+
+    .menu-bar div {
+      height: 5px;
+      background-color: #fff;
+      margin: 5px 0;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .menu-popup {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #111;
+      display: flex;
+      flex-direction: column;
+      padding: 40px 20px;
+      z-index: 101;
+      transition: left 0.4s ease-in-out;
+      box-shadow: 4px 0 20px rgba(0, 170, 255, 0.1);
+    }
+
+    .menu-popup.show {
+      left: 0;
+    }
+
+    .menu-popup a {
+      color: #00aaff;
+      text-decoration: none;
+      font-size: 20px;
+      padding: 15px 0;
+      border-bottom: 1px solid #333;
+      transition: color 0.3s ease;
+    }
+
+    .menu-popup a:hover {
+      color: #fff;
+    }
+
+    .content-box {
+      background-color: #111;
+      padding: 40px 60px 100px 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+      box-shadow: 0 0 50px rgba(0, 170, 255, 0.1);
+      text-align: left;
+      transition: padding 0.3s ease, transform 0.3s ease-in-out;
+    }
+
+    .content-box:first-of-type {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 80px;
+    }
+
+    .bottom-glow {
+      text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.7),
+        0 4px 6px rgba(0, 170, 255, 0.6),
+        0 8px 12px rgba(0, 170, 255, 0.4),
+        0 12px 18px rgba(0, 170, 255, 0.2);
+      transition: text-shadow 0.5s ease-in-out;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 60px;
+      font-weight: bold;
+      margin-bottom: 50px;
+      color: #fff;
+      transition: all 0.5s ease;
+    }
+
+    .logo img {
+      height: 70px;
+      margin-right: 20px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .logo:hover img {
+      transform: rotate(360deg);
+      opacity: 0.8;
+    }
+
+    .welcome-text {
+      font-size: 40px;
+      color: rgba(170, 184, 194, 0.9);
+      font-weight: 300;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+    }
+
+    .title-label {
+      font-size: 54px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #00aaff;
+    }
+
+    .what-we-do {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 60px;
+      transition: padding 0.3s ease, transform 0.3s ease;
+    }
+
+    .section-title {
+      font-size: 48px;
+      color: #00aaff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #00aaff, 0 0 20px #00aaff;
+    }
+
+    .section-intro {
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 40px;
+      max-width: 900px;
+      text-align: left;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: flex-start;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .service {
+      background-color: #1a1a1a;
+      flex: 1 1 calc(33.333% - 20px);
+      padding: 50px;
+      border-radius: 12px;
+      min-width: 280px;
+      box-shadow: 0 0 20px rgba(0, 170, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
+    }
+
+    .service:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px rgba(0, 170, 255, 0.3);
+    }
+
+    .service h3 {
+      font-size: 1.6rem;
+      color: #00aaff;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px #00aaff;
+    }
+
+    .service p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .contact-form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 60vh;
+      padding: 60px 0;
+    }
+
+    .contact-form {
+      background-color: #1a1a1a;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 170, 255, 0.2);
+      max-width: 600px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .contact-form .form-group {
+      margin-bottom: 20px;
+    }
+
+    .contact-form label {
+      display: block;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 8px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 2px solid #333;
+      background-color: #222;
+      color: #fff;
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #00aaff;
+      outline: none;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+    }
+
+    .submit-btn {
+      display: inline-block;
+      background-color: #00aaff;
+      color: #fff;
+      padding: 15px 25px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+      transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+    .submit-btn:hover {
+      background-color: #0099cc;
+      transform: translateY(-2px);
+    }
+
+    .submit-btn:active {
+      background-color: #0088bb;
+      transform: translateY(0);
+    }
+
+    footer.footer-socials {
+      width: 100%;
+      background-color: #000;
+      padding: 40px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 80px;
+    }
+
+    .footer-socials .social-icons {
+      display: flex;
+      gap: 30px;
+    }
+
+    .footer-socials img {
+      width: 40px;
+      height: 40px;
+      opacity: 0.8;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .footer-socials img:hover {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+
+    @media (max-width: 1024px) {
+      body { font-size: 15px; }
+    }
+
+    @media (max-width: 600px) {
+      body { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Menu Button -->
+  <div class="menu-bar" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- Slide-in Popup -->
+  <div class="menu-popup" id="menuPopup">
+    <a href="#about-us" onclick="toggleMenu()">About Us</a>
+    <a href="#what-we-do" onclick="toggleMenu()">What We Do</a>
+    <a href="#contact" onclick="toggleMenu()">Contact Us</a>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="content-box">
+    <div class="logo bottom-glow">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/graduation-cap.png" alt="icon" loading="lazy"/>
+      taca.io
+    </div>
+
+    <div class="welcome-text bottom-glow">Welcome to taca.io</div>
+    <div class="title-label bottom-glow">
+      Custom Product & Software Development Focused On Your Success
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div id="about-us" class="content-box">
+    <h2 class="section-title bottom-glow">Hello, we’re taca.io</h2>
+    <p class="section-intro">
+      Our DNA is made of ex-startup founders and the top talent in Product, UX/UI, Software development, and Machine & Deep Learning...
+    </p>
+  </div>
+
+  <!-- Services -->
+  <div id="what-we-do" class="what-we-do">
+    <h2 class="section-title bottom-glow">What We Do</h2>
+    <p class="section-intro">We help entrepreneurs and business leaders build and launch innovative custom software solutions...</p>
+    <div class="services">
+      <div class="service"><h3>Product Scope</h3><p>Align vision with business goals.</p></div>
+      <div class="service"><h3>UX/UI Design</h3><p>Design engaging, usable interfaces.</p></div>
+      <div class="service"><h3>MVP Builder</h3><p>Launch quickly with a lean MVP.</p></div>
+      <div class="service"><h3>Dedicated Teams</h3><p>Build with a focused dev team.</p></div>
+      <div class="service"><h3>Custom Software</h3><p>Create tailored digital products.</p></div>
+      <div class="service"><h3>AI Enablement</h3><p>Integrate ML & GenAI into your business.</p></div>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div id="contact" class="contact-form-container">
+    <div class="contact-form">
+      <h2 class="section-title bottom-glow">Contact Us</h2>
+      <p class="section-intro">Have a project in mind? Let’s create something amazing together.</p>
+      <form action="#" method="POST">
+        <div class="form-group"><label for="name">Full Name:</label><input type="text" id="name" name="name" required placeholder="Your Name" /></div>
+        <div class="form-group"><label for="email">Email:</label><input type="email" id="email" name="email" required placeholder="Your Email" /></div>
+        <div class="form-group"><label for="message">Message:</label><textarea id="message" name="message" required placeholder="Your Message" rows="6"></textarea></div>
+        <button type="submit" class="submit-btn bottom-glow">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-socials">
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank"><img src="https://img.icons8.com/ios-filled/50/00aaff/facebook-new.png" alt="Facebook" /></a>
+      <a href="https://www.linkedin.com" target="_blank"><img src="https://img.icons8.com/ios-filled/50/00aaff/linkedin.png" alt="LinkedIn" /></a>
+      <a href="https://www.youtube.com" target="_blank"><img src="https://img.icons8.com/ios-filled/50/00aaff/youtube-play.png" alt="YouTube" /></a>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleMenu() {
+      const menuPopup = document.getElementById('menuPopup');
+      menuPopup.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>
