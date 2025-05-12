@@ -39,7 +39,7 @@
     }
 
     .navbar a {
-      color: #00aaff;
+      color: #fff;
       text-decoration: none;
       padding: 10px 20px;
       font-size: 18px;
@@ -85,7 +85,7 @@
       padding: 40px 20px;
       z-index: 101;
       transition: left 0.4s ease-in-out;
-      box-shadow: 4px 0 20px rgba(0, 170, 255, 0.1);
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
     }
 
     .menu-popup.show {
@@ -93,7 +93,7 @@
     }
 
     .menu-popup a {
-      color: #00aaff;
+      color: #fff;
       text-decoration: none;
       font-size: 20px;
       padding: 15px 0;
@@ -110,7 +110,7 @@
       padding: 40px 60px 100px 60px;
       max-width: 1400px;
       margin: 0 auto;
-      box-shadow: 0 0 50px rgba(0, 170, 255, 0.1);
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
       text-align: left;
       transition: padding 0.3s ease, transform 0.3s ease-in-out;
     }
@@ -126,9 +126,9 @@
     .bottom-glow {
       text-shadow:
         0 2px 4px rgba(0, 0, 0, 0.7),
-        0 4px 6px rgba(0, 170, 255, 0.6),
-        0 8px 12px rgba(0, 170, 255, 0.4),
-        0 12px 18px rgba(0, 170, 255, 0.2);
+        0 4px 6px rgba(0, 0, 0, 0.6),
+        0 8px 12px rgba(0, 0, 0, 0.4),
+        0 12px 18px rgba(0, 0, 0, 0.2);
       transition: text-shadow 0.5s ease-in-out;
     }
 
@@ -166,7 +166,7 @@
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 4px;
-      color: #00aaff;
+      color: #fff;
     }
 
     .what-we-do {
@@ -178,9 +178,9 @@
 
     .section-title {
       font-size: 48px;
-      color: #00aaff;
+      color: #fff;
       margin-bottom: 20px;
-      text-shadow: 0 0 10px #00aaff, 0 0 20px #00aaff;
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff;
     }
 
     .section-intro {
@@ -205,20 +205,20 @@
       padding: 50px;
       border-radius: 12px;
       min-width: 280px;
-      box-shadow: 0 0 20px rgba(0, 170, 255, 0.1);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
     }
 
     .service:hover {
       transform: translateY(-10px);
-      box-shadow: 0 0 25px rgba(0, 170, 255, 0.3);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
     }
 
     .service h3 {
       font-size: 1.6rem;
-      color: #00aaff;
+      color: #fff;
       margin-bottom: 10px;
-      text-shadow: 0 0 10px #00aaff;
+      text-shadow: 0 0 10px #fff;
     }
 
     .service p {
@@ -238,7 +238,7 @@
       background-color: #1a1a1a;
       padding: 40px;
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 170, 255, 0.2);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
       max-width: 600px;
       width: 100%;
       margin: 0 auto;
@@ -269,7 +269,7 @@
 
     .contact-form input:focus,
     .contact-form textarea:focus {
-      border-color: #00aaff;
+      border-color: #fff;
       outline: none;
     }
 
@@ -284,8 +284,8 @@
 
     .submit-btn {
       display: inline-block;
-      background-color: #00aaff;
-      color: #fff;
+      background-color: #fff;
+      color: #000;
       padding: 15px 25px;
       font-size: 1.2rem;
       font-weight: 600;
@@ -298,12 +298,12 @@
     }
 
     .submit-btn:hover {
-      background-color: #0099cc;
+      background-color: #e6e6e6;
       transform: translateY(-2px);
     }
 
     .submit-btn:active {
-      background-color: #0088bb;
+      background-color: #ccc;
       transform: translateY(0);
     }
 
@@ -373,7 +373,7 @@
   </div>
 
   <!-- About Section -->
-  <div id="about-us" class="content-box">
+<div id="about-us" class="content-box">
     <h2 class="section-title bottom-glow">Hello, we’re taca.io</h2>
     <p class="section-intro">
       Our DNA is made of ex-startup founders and the top talent in Product, UX/UI, Software development, and Machine & Deep Learning...
@@ -397,23 +397,184 @@
   <!-- Contact -->
   <div id="contact" class="contact-form-container">
     <div class="contact-form">
-      <h2 class="section-title bottom-glow">Contact Us</h2>
-      <p class="section-intro">Have a project in mind? Let’s create something amazing together.</p>
-      <form action="#" method="POST">
-        <div class="form-group"><label for="name">Full Name:</label><input type="text" id="name" name="name" required placeholder="Your Name" /></div>
-        <div class="form-group"><label for="email">Email:</label><input type="email" id="email" name="email" required placeholder="Your Email" /></div>
-        <div class="form-group"><label for="message">Message:</label><textarea id="message" name="message" required placeholder="Your Message" rows="6"></textarea></div>
-        <button type="submit" class="submit-btn bottom-glow">Submit</button>
-      </form>
-    </div>
-  </div>
+        <h2 class="section-title bottom-glow">Contact Us</h2>
 
+        <!-- EmailJS Script -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+        <!-- Initialize EmailJS -->
+        <script type="text/javascript">
+            (function() {
+                emailjs.init("OU7TrUl0UqU9EXolq"); // Your EmailJS public key
+            })();
+        </script>
+
+        <p class="section-intro">Have a project in mind? Let’s create something amazing together.</p>
+
+        <!-- Contact Form -->
+        <form id="contact-form" onsubmit="sendEmail(); return false;">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required placeholder="Your Name" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="Your Email" />
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required placeholder="Your Message" rows="6"></textarea>
+            </div>
+            <button type="submit" class="submit-btn bottom-glow">Submit</button>
+        </form>
+    </div>
+</div>
+
+<!-- Success Popup -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <p id="popup-message"></p>
+    </div>
+</div>
+
+<script>
+    // Function to send the email using EmailJS
+    function sendEmail() {
+        // Get form values
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
+
+        // Prepare template parameters to send to EmailJS
+        const templateParams = {
+            user_name: name,     // User's name
+            user_email: email,   // User's email
+            message: message     // Message content
+        };
+
+        // Send the email using EmailJS
+        emailjs.send("service_rwptp1d", "template_i1t0kqb", templateParams)
+            .then(function(response) {
+                showPopup(name, email);  // Show success popup with the sender info
+                console.log('SUCCESS!', response);
+            }, function(error) {
+                alert('Error sending message.');
+                console.log('FAILED...', error);
+            });
+    }
+
+    // Function to show the popup with sender's info
+    function showPopup(senderName, senderEmail) {
+        const popupMessage = `Your message was sent successfully from ${senderName} (${senderEmail}) to <strong>ronitvig@gmail.com</strong>`;
+        document.getElementById("popup-message").innerHTML = popupMessage;
+        document.getElementById("popup").style.display = "block";
+    }
+
+    // Function to close the popup
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+</script>
+
+<!-- Popup Styles -->
+<style>
+    /* The popup itself */
+    .popup {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+    }
+
+    /* Popup content */
+    .popup-content {
+        background-color: #fff;
+        color: #000;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 400px;
+        text-align: center;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Close button */
+    .close-btn {
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        float: right;
+        margin-top: -10px;
+        cursor: pointer;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* Text styling */
+    .popup-content p {
+        font-size: 18px;
+    }
+
+    /* Styling the form and inputs */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    .submit-btn {
+        padding: 10px 20px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    .submit-btn:hover {
+        background-color: #555;
+    }
+
+    .bottom-glow {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+
+
+  
+  
+
+  
   <!-- Footer -->
   <footer class="footer-socials">
     <div class="social-icons">
-      <a href="https://www.facebook.com" target="_blank"><img src="https://img.icons8.com/ios-filled/50/00aaff/facebook-new.png" alt="Facebook" /></a>
-      <a href="https://www.linkedin.com" target="_blank"><img src="https://img.icons8.com/ios-filled/50/00aaff/linkedin.png" alt="LinkedIn" /></a>
-      <a href="https://www.youtube.com" target="_blank"><img src="https://img.icons8.com/ios-filled/50/00aaff/youtube-play.png" alt="YouTube" /></a>
+      <a href="https://www.facebook.com" target="_blank"><img src="https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png" alt="Facebook" /></a>
+      <a href="https://www.linkedin.com" target="_blank"><img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="LinkedIn" /></a>
+      <a href="https://www.youtube.com" target="_blank"><img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube" /></a>
     </div>
   </footer>
 
